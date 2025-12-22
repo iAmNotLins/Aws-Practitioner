@@ -178,3 +178,172 @@ Created for notes about Aws Practitioner lessons
 - Motivo:
   - Alta taxa de throughput.
   - Baixa latência no acesso a grandes volumes de dados.
+ 
+    ```markdown
+# COMO PROVISIONAR RECURSOS AWS
+
+---
+
+## Operação de Serviços na AWS
+
+### Objetivo
+
+Detalhar como utilizar o **Console de Gerenciamento da AWS**, a **AWS Command Line Interface (AWS CLI)** e os **SDKs da AWS** para operar os serviços da AWS.
+
+---
+
+## 1. Console de Gerenciamento da AWS
+
+Interface gráfica (web) da AWS.
+
+### Indicado para
+
+- Iniciantes  
+- Configurações pontuais  
+- Visualização de recursos  
+
+### Como usar
+
+- Acessar via navegador  
+- Criar, configurar e monitorar serviços manualmente  
+- Ideal para testes, aprendizado e ajustes rápidos  
+
+### Pontos positivos e limitações
+
+- **Vantagem:** fácil de usar  
+- **Limitação:** pouco eficiente para automação e tarefas repetitivas  
+
+---
+
+## 2. AWS Command Line Interface (AWS CLI)
+
+Interface de linha de comando da AWS.
+
+### Indicada para
+
+- Automação  
+- Scripts  
+- Administração técnica  
+
+### Como usar
+
+- Instalar a AWS CLI no sistema  
+- Configurar credenciais (Access Key e Secret Key)  
+- Executar comandos para criar, listar, alterar ou excluir recursos  
+
+### Pontos positivos e limitações
+
+- **Vantagem:** rápida, automatizável e padronizada  
+- **Limitação:** exige conhecimento técnico e comandos corretos  
+
+---
+
+## 3. SDKs da AWS
+
+Bibliotecas que permitem integração da AWS em aplicações.
+
+### Indicados para
+
+- Desenvolvimento de software  
+- Integração direta com sistemas e APIs  
+- Automação avançada via código  
+
+### Como usar
+
+- Escolher o SDK da linguagem (Python, JavaScript, Java, etc.)  
+- Autenticar com credenciais  
+- Controlar serviços AWS diretamente pelo código da aplicação  
+
+### Pontos positivos e limitações
+
+- **Vantagem:** máximo controle e integração  
+- **Limitação:** exige conhecimento de programação  
+
+---
+
+## Resumo rápido
+
+- **Console** → uso manual e visual  
+- **CLI** → automação via comandos  
+- **SDKs** → integração direta em aplicações  
+
+---
+
+## Modelo de Responsabilidade Compartilhada da AWS
+
+Na AWS, a segurança segue o modelo de **responsabilidade compartilhada**:
+
+- **AWS** é responsável pela segurança da infraestrutura da nuvem  
+- **Cliente** é responsável pela segurança dos sistemas, aplicações, dados e controles de acesso dentro da nuvem  
+
+### Máquinas virtuais (Amazon EC2)
+
+Em serviços não gerenciados, como o Amazon EC2, o cliente é responsável por:
+
+- Sistema operacional  
+- Atualizações e patches  
+- Firewalls (Security Groups)  
+- Configurações de segurança da instância  
+
+---
+
+## Serviços Gerenciados vs Não Gerenciados
+
+### Serviço não gerenciado
+
+Você controla quase tudo.
+
+**Exemplo:** Amazon EC2
+
+Você é responsável por:
+
+- Sistema operacional  
+- Atualizações e patches  
+- Firewall (Security Groups)  
+- Hardening e segurança  
+- Instalação e manutenção de aplicações  
+
+**Regra prática:**  
+👉 Se você gerencia o sistema operacional, o serviço não é gerenciado.
+
+---
+
+### Serviço gerenciado
+
+A AWS cuida da infraestrutura e do sistema base.
+
+**Exemplos:**
+
+- Amazon RDS  
+- AWS Lambda  
+- Amazon S3  
+
+Você é responsável apenas por:
+
+- Dados  
+- Configuração de acesso  
+- Regras de segurança  
+- Lógica da aplicação  
+
+A AWS é responsável por:
+
+- Sistema operacional  
+- Atualizações  
+- Escalabilidade  
+- Alta disponibilidade  
+
+**Regra prática:**  
+👉 Se você não vê o servidor nem o sistema operacional, o serviço é gerenciado.
+
+---
+
+## Comparação rápida
+
+| Critério          | Não gerenciado | Gerenciado |
+|------------------|---------------|------------|
+| Acesso ao SO     | Sim           | Não        |
+| Atualizações     | Você          | AWS        |
+| Escalabilidade   | Manual        | Automática |
+| Manutenção       | Alta          | Baixa      |
+```
+
