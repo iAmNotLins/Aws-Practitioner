@@ -346,7 +346,7 @@ A AWS é responsável por:
 | Escalabilidade   | Manual        | Automática |
 | Manutenção       | Alta          | Baixa      |
 ```
-
+```
 # Demonstração: Lançamento de uma Instância do Amazon EC2
 
 ## Objetivos
