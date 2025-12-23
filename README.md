@@ -347,3 +347,137 @@ A AWS é responsável por:
 | Manutenção       | Alta          | Baixa      |
 ```
 
+# Demonstração: Lançamento de uma Instância do Amazon EC2
+
+## Objetivos
+
+- Identificar as principais configurações necessárias ao criar uma instância EC2  
+- Explicar como a AMI garante consistência e eficiência na escalabilidade de aplicações  
+
+---
+
+## AMI (Amazon Machine Image)
+
+### Componentes de uma AMI
+
+Uma AMI contém:
+
+- Sistema operacional  
+- Estrutura de armazenamento  
+- Arquitetura da instância  
+- Permissões de lançamento  
+- Softwares e aplicações pré-instaladas  
+
+A partir de uma única AMI, é possível criar múltiplas instâncias EC2 com configuração idêntica, garantindo padronização.
+
+---
+
+### Formas de Utilizar AMIs
+
+- **AMI própria**
+  - Criada sob medida
+  - Configurações e softwares personalizados  
+
+- **AMIs da AWS**
+  - Imagens oficiais
+  - Sistemas operacionais e softwares comuns  
+
+- **AWS Marketplace**
+  - AMIs de parceiros
+  - Soluções especializadas prontas para uso  
+
+---
+
+### Repetibilidade e Escalabilidade
+
+- Ambientes padronizados e reproduzíveis  
+- Consistência entre desenvolvimento, testes e produção  
+- Redução de erros  
+- Facilidade de gerenciamento em larga escala  
+
+---
+
+# Modelos de Precificação do Amazon EC2
+
+## Objetivos
+
+- Explicar as opções de preços do EC2  
+- Indicar quando usar cada modelo  
+- Descrever reservas de capacidade e flexibilidade das Instâncias Reservadas  
+
+---
+
+## Opções de Preço
+
+### Sob Demanda
+
+- Paga apenas pelo uso  
+- Ideal para:
+  - Testes
+  - Picos de acesso
+  - Cargas imprevisíveis  
+
+---
+
+### Savings Plans
+
+- Compromisso de 1 a 3 anos  
+- Economia de até 72%  
+- Indicado para workloads com uso previsível  
+
+---
+
+### Instâncias Reservadas (RI)
+
+- Compromisso de 1 a 3 anos  
+- Economia de até 75%  
+- Formas de pagamento:
+  - Total antecipado
+  - Parcial
+  - No final  
+- Descontos aplicados de forma flexível entre tamanhos e zonas da mesma região  
+
+---
+
+### Instâncias Spot
+
+- Até 90% de desconto  
+- Podem ser interrompidas pela AWS a qualquer momento  
+- Ideais para workloads:
+  - Tolerantes a falhas
+  - Tolerantes a interrupções  
+
+---
+
+### Hosts Dedicados
+
+- Servidor físico exclusivo  
+- Maior controle, segurança e compliance  
+
+---
+
+## Quando Usar Cada Modelo
+
+- **Instâncias Sob Demanda**
+  - Consumo variável ou imprevisível  
+
+- **Savings Plans**
+  - Uso previsível e contínuo  
+
+- **Instâncias Reservadas (RI)**
+  - Demanda estável por 1 a 3 anos  
+
+- **Instâncias Spot**
+  - Processamentos temporários
+  - Workloads tolerantes a interrupções  
+
+- **Reservas de Capacidade**
+  - Workloads críticos
+  - Necessidade de capacidade garantida  
+
+- **Instâncias Dedicadas**
+  - Uso exclusivo de parte do servidor  
+
+- **Hosts Dedicados**
+  - Controle total sobre o servidor físico  
+
