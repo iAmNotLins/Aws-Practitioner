@@ -612,5 +612,9 @@ O uso de filas (como o SQS):
 - Desacopla sistemas  
 - Permite processamento assíncrono  
 - Evita falhas em cascata  
-- Garante que mensagens sejam processadas quando o consumidor estiver disponível  
+- Garante que mensagens sejam processadas quando o consumidor estiver disponível
+
+
+<img width="685" height="434" alt="image" src="https://github.com/user-attachments/assets/f85af94c-1866-4020-8348-2e16240e8463" />
+
 
