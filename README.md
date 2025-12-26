@@ -614,7 +614,55 @@ O uso de filas (como o SQS):
 - Evita falhas em cascata  
 - Garante que mensagens sejam processadas quando o consumidor estiver disponível
 
+# Computação sem Servidor — Resumo
+
+## Tipos de Serviços Computacionais na AWS
+
+### Não gerenciados
+- Exemplo: Amazon EC2  
+- A AWS gerencia apenas a infraestrutura física  
+- O cliente é responsável por:
+  - Sistema operacional
+  - Segurança
+  - Rede
+  - Aplicações
+
+### Gerenciados
+- A AWS reduz a sobrecarga operacional
+- Gerencia parte da infraestrutura
+- O cliente ainda realiza algumas configurações e provisionamentos
 
 <img width="685" height="434" alt="image" src="https://github.com/user-attachments/assets/f85af94c-1866-4020-8348-2e16240e8463" />
+
+### Sem servidor (Serverless)
+- Totalmente gerenciados pela AWS
+- Não há necessidade de provisionar ou manter servidores
+- O foco do cliente é apenas no código e na lógica da aplicação
+- Exemplo: AWS Lambda
+
+<img width="757" height="422" alt="image" src="https://github.com/user-attachments/assets/3f26ecb8-45b4-4d3b-b273-26e86aa11fb7" />
+
+<img width="691" height="482" alt="image" src="https://github.com/user-attachments/assets/d93bb9cd-bc0e-45a7-87ed-4d3bb920af1e" />
+
+
+
+---
+
+## Responsabilidades na Computação sem Servidor
+
+### Responsabilidades da AWS
+- Infraestrutura
+- Escalabilidade
+- Disponibilidade
+- Manutenção dos servidores
+
+### Responsabilidades do Cliente
+- Código da aplicação
+- Lógica de negócio
+- Configuração de permissões e segurança do código
+
+A computação sem servidor permite maior agilidade, menos complexidade operacional e foco total no desenvolvimento da aplicação.
+
+
 
 
