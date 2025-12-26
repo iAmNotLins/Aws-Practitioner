@@ -481,3 +481,136 @@ A partir de uma única AMI, é possível criar múltiplas instâncias EC2 com co
 - **Hosts Dedicados**
   - Controle total sobre o servidor físico  
 
+
+# Scaling do Amazon EC2
+
+## Conceitos de Escalabilidade e Elasticidade na AWS
+
+Escalabilidade é a capacidade de um sistema crescer para atender mais demanda. Na AWS, ela ocorre de duas formas:
+
+### Escalabilidade vertical (Scale Up)
+- Aumenta os recursos da instância existente (CPU, memória, etc.).
+
+### Escalabilidade horizontal (Scale Out)
+- Aumenta a quantidade de instâncias para distribuir a carga de processamento.
+
+Elasticidade é a capacidade de aumentar ou reduzir recursos automaticamente, de acordo com a demanda, evitando desperdício e garantindo desempenho.
+
+---
+
+## Ajuste de Capacidade Computacional na AWS
+
+A AWS permite que empresas ajustem recursos de forma dinâmica, pagando apenas pelo que utilizam. Isso garante:
+
+- Alta disponibilidade  
+- Melhor desempenho sob picos de acesso  
+- Otimização de custos em períodos de baixa demanda  
+
+---
+
+## Amazon EC2 Auto Scaling
+
+O Amazon EC2 Auto Scaling ajusta automaticamente o número de instâncias do EC2 conforme a demanda da aplicação.
+
+Ele funciona de duas maneiras:
+
+### Escalonamento dinâmico
+- Ajusta as instâncias em tempo real com base em métricas (CPU, requisições, etc.).
+
+### Escalonamento preditivo
+- Analisa padrões históricos e provisiona instâncias antecipadamente.
+
+### Benefícios principais
+- Alta disponibilidade  
+- Resiliência  
+- Escalabilidade automática  
+
+---
+
+## Direcionamento de Tráfego com Elastic Load Balancing
+
+### Desafios sem balanceamento de carga
+- Sobrecarga de uma única instância  
+- Lentidão nas respostas  
+- Falhas em picos de acesso  
+
+### Vantagens do Elastic Load Balancing
+
+O Elastic Load Balancing distribui o tráfego automaticamente entre várias instâncias EC2.
+
+Principais benefícios:
+
+- Distribuição eficiente de tráfego  
+- Alta disponibilidade  
+- Escalabilidade automática  
+- Gerenciamento simplificado, com failover e manutenção gerenciada pela AWS  
+
+---
+
+## Integração entre Auto Scaling e ELB
+
+### Baixa demanda
+- Poucas instâncias são suficientes para atender as requisições.
+
+### Alta demanda
+- O ELB recebe o tráfego e o Auto Scaling adiciona novas instâncias EC2 automaticamente.
+
+### Balanceamento contínuo
+- O ELB distribui as requisições igualmente, evitando sobrecarga em uma única instância.
+
+Essa integração garante desempenho, resiliência e uso eficiente de recursos.
+
+---
+
+## Sistema de Mensagens e Enfileiramento
+
+### Amazon Simple Queue Service (SQS)
+
+O Amazon Simple Queue Service permite envio, armazenamento e processamento assíncrono de mensagens.
+
+Benefícios:
+
+- Processamento desacoplado  
+- Alta escalabilidade  
+- Garantia de entrega das mensagens  
+- Componentes não precisam estar ativos ao mesmo tempo  
+
+---
+
+### Amazon Simple Notification Service (SNS)
+
+O Amazon Simple Notification Service utiliza o modelo publicação/assinatura (pub/sub).
+
+- Publicadores enviam mensagens para tópicos SNS  
+- Assinantes podem ser:
+  - E-mail  
+  - Funções Lambda  
+  - Servidores  
+  - Filas SQS  
+  - Outros endpoints  
+
+Ideal para notificações em tempo real e fan-out de mensagens.
+
+---
+
+## Arquiteturas Fortemente vs Fracamente Acopladas
+
+### Fortemente acoplada
+- Componentes dependem diretamente uns dos outros.
+
+### Fracamente acoplada
+- Componentes operam de forma independente, com comunicação assíncrona.
+
+Arquiteturas fracamente acopladas são mais escaláveis, resilientes e flexíveis.
+
+---
+
+## Benefícios do Uso de Filas de Mensagens
+
+O uso de filas (como o SQS):
+
+- Desacopla sistemas  
+- Permite processamento assíncrono  
+- Evita falhas em cascata  
+- Garante que mensagens sejam processadas quando o consumidor estiver disponível  
+
