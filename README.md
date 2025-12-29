@@ -663,6 +663,129 @@ O uso de filas (como o SQS):
 
 A computação sem servidor permite maior agilidade, menos complexidade operacional e foco total no desenvolvimento da aplicação.
 
+# AWS Lambda
+
+## Conceito e Funcionalidade
+
+- A solução **AWS Lambda** é um serviço computacional **sem servidor (serverless)**.
+- Executa código em resposta a eventos **sem a necessidade de provisionar ou gerenciar servidores**.
+- A AWS gerencia automaticamente:
+  - Infraestrutura
+  - Execução
+  - Scaling
+  - Alocação de recursos
+- A cobrança é feita **por tempo computacional utilizado**, medido até o milissegundo.
+- O desempenho pode ser otimizado ajustando o **tamanho de memória** da função.
+
+---
+
+## Principais Componentes do AWS Lambda
+
+- **Funções**
+  - Código que será executado
+- **Gatilhos (Triggers)**
+  - Eventos que acionam a função (ex: S3, API Gateway, eventos de serviços AWS)
+- **Scaling**
+  - Escala automática conforme o volume de solicitações
+
+---
+
+## Como a Solução Lambda Funciona
+
+### 1. Upload do Código
+
+- O código é enviado para o Lambda
+- Ele é carregado como uma **função Lambda**
+
+### 2. Definição da Origem de Evento
+
+- A função é configurada para ser acionada por eventos como:
+  - Serviços da AWS
+  - Aplicações móveis
+  - Requisições HTTP
+
+### 3. Execução do Código
+
+- O código executa **somente quando ocorre um evento**
+- O runtime do Lambda:
+  - Recebe os dados do evento
+  - Executa a função
+  - Gerencia automaticamente infraestrutura e scaling
+- Não há necessidade de gerenciar servidores ou ambiente de execução
+
+### 4. Modelo de Cobrança
+
+- Pagamento baseado em:
+  - Tempo de execução
+  - Quantidade de memória alocada
+- Cobrança feita até o **milissegundo**
+
+---
+
+# Contêineres e Orquestração na AWS
+
+## Contêineres e Ambiente de Runtime
+
+- Contêineres empacotam:
+  - Aplicação
+  - Bibliotecas
+  - Runtime
+  - Configurações
+- Garantem que a aplicação rode da mesma forma em qualquer ambiente
+- Características principais:
+  - Não dependem do sistema operacional do host
+  - Evitam o problema do “funciona na minha máquina”
+  - São leves (compartilham o kernel do SO)
+  - Podem ser executados em qualquer lugar que suporte contêineres
+
+---
+
+## Amazon Elastic Container Registry (Amazon ECR)
+
+- Serviço da AWS para **armazenar e gerenciar imagens de contêiner**
+- Principais funcionalidades:
+  - Armazenamento seguro de imagens Docker
+  - Versionamento de imagens por meio de tags
+  - Controle de acesso via IAM
+  - Integração direta com:
+    - ECS
+    - EKS
+    - Fargate
+
+---
+
+## Orquestração com Amazon ECS e Amazon EKS
+
+- Orquestração envolve:
+  - Implantar
+  - Escalar
+  - Atualizar
+  - Monitorar contêineres automaticamente
+
+### Amazon Elastic Container Service (ECS)
+
+- Orquestrador nativo da AWS
+- Mais simples de configurar
+- Ideal para quem busca menor complexidade operacional
+
+### Amazon Elastic Kubernetes Service (EKS)
+
+- Kubernetes gerenciado pela AWS
+- Oferece:
+  - Maior flexibilidade
+  - Portabilidade entre ambientes
+- Padrão amplamente utilizado no mercado
+
+---
+
+## AWS Fargate
+
+- Permite executar contêineres **sem provisionar ou gerenciar servidores**
+- Características principais:
+  - Não há instâncias EC2, clusters ou SO para administrar
+  - Pagamento apenas por CPU e memória utilizadas
+  - Integração com ECS e EKS
+  - Scaling automático
 
 
 
