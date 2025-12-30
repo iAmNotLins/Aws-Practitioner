@@ -788,4 +788,234 @@ A computação sem servidor permite maior agilidade, menos complexidade operacio
   - Scaling automático
 
 
+# Outros Serviços Computacionais
+
+---
+
+## AWS Elastic Beanstalk
+
+**Objetivo:**  
+Simplificar o provisionamento e o gerenciamento de ambientes de aplicação.
+
+**Cria automaticamente:**
+- Infraestrutura
+- Redes
+- Instâncias EC2
+- Escalabilidade automática
+- Balanceadores de carga
+
+O usuário apenas envia o código da aplicação e define configurações básicas.
+
+Permite salvar configurações de ambientes para reaproveitar implantações.
+
+👉 Ideal para quem quer focar na aplicação e não na infraestrutura.
+
+---
+
+## AWS Batch
+
+**Objetivo:**  
+Executar tarefas computacionais em grande escala.
+
+**Gerencia automaticamente:**
+- Provisionamento de servidores
+- Escalabilidade de recursos
+- Distribuição de tarefas
+
+Ajusta os recursos conforme a demanda.
+
+Utiliza instâncias EC2 de forma otimizada.
+
+👉 Ideal para processamento em lote, jobs pesados e workloads event-driven.
+
+---
+
+## Amazon Lightsail
+
+**Objetivo:**  
+Simplificar a hospedagem de aplicações web.
+
+- Elimina grande parte da complexidade da infraestrutura tradicional
+- Interface simples e preços previsíveis
+
+Ideal para projetos pequenos, sites e aplicações simples.
+
+👉 Ótima opção para quem quer algo rápido e fácil de gerenciar.
+
+---
+
+## AWS Outposts
+
+**Objetivo:**  
+Estender os serviços da AWS para ambientes locais.
+
+- Leva a infraestrutura e os serviços da AWS para o datacenter local
+- Oferece experiência unificada entre on-premises e AWS
+
+Atende necessidades como:
+- Baixa latência
+- Residência de dados
+- Arquiteturas híbridas
+
+👉 Ideal para cenários de nuvem híbrida.
+
+---
+
+# Escolha de Regiões AWS
+
+## Fatores para escolha de uma Região
+
+### 1️⃣ Conformidade
+Exigências legais e regulatórias (LGPD, GDPR, dados financeiros).  
+➡️ Se houver obrigação legal, a região é obrigatória.
+
+### 2️⃣ Proximidade (latência)
+Quanto mais próxima dos usuários, menor o tempo de resposta.
+
+### 3️⃣ Disponibilidade de serviços
+Nem todos os serviços estão disponíveis em todas as regiões.
+
+### 4️⃣ Custo
+Os preços variam conforme impostos e custos operacionais locais.
+
+---
+
+# Infraestrutura Global da AWS
+
+## Benefícios do uso de várias Regiões e Zonas de Disponibilidade
+
+### Multi-AZ
+- Uso de múltiplas AZs dentro da mesma região
+- Protege contra falha de um data center
+- Baixa latência entre AZs
+- Gerenciado por serviços como RDS, ELB e ECS
+
+**Quando usar:**  
+Alta disponibilidade e failover automático.
+
+---
+
+### Multi-Região
+- Uso de múltiplas regiões geográficas
+- Isolamento total entre regiões
+- Protege contra falha de uma região inteira
+- Maior complexidade e latência
+
+**Quando usar:**  
+Disaster Recovery, aplicações globais e alta resiliência.
+
+---
+
+## Locais da borda (Edge Locations)
+
+- Pontos distribuídos globalmente (ex.: Atlanta, Xangai)
+- Fornecem baixa latência para entrega de conteúdo e acesso a serviços
+- Aproximam os dados do usuário final
+
+---
+
+## Diferença entre os conceitos
+
+- **Região:** área geográfica isolada
+- **Zona de Disponibilidade (AZ):** data center redundante dentro da região
+- **Local da borda:** entrega rápida de conteúdo perto do usuário
+
+---
+
+# Infraestrutura e Automação
+
+## AWS CloudFormation
+
+**Objetivo:**  
+Infraestrutura como Código (IaC).
+
+**Principais recursos e benefícios:**
+- Templates em YAML ou JSON
+- Provisionamento automatizado
+- Controle de versão
+- Atualizações consistentes
+- Rollback automático
+- Redução de erros manuais
+- Repetibilidade entre ambientes (dev, teste, prod)
+
+👉 Infraestrutura previsível, auditável e escalável.
+
+---
+
+## Formas de acesso à AWS
+
+### Acesso programático
+- AWS CLI
+- AWS SDKs
+
+**Casos de uso:**
+- Automação DevOps
+- Pipelines CI/CD
+- Scripts e integrações
+- Infraestrutura como código
+
+---
+
+### Console de Gerenciamento da AWS
+- Interface gráfica (web)
+
+**Casos de uso:**
+- Aprendizado
+- Testes
+- Configurações pontuais
+- Monitoramento visual
+
+---
+
+## Infraestrutura como Código (IaC)
+
+**Modelo declarativo**
+
+- CloudFormation (nativo)
+
+**Casos de uso:**
+- Ambientes padronizados
+- Deploys repetíveis
+- Escala profissional
+- Governança e auditoria
+
+---
+
+# VPC e Sub-redes
+
+## O que é uma VPC
+
+A Amazon Virtual Private Cloud (VPC) é uma rede virtual isolada dentro da AWS.
+
+**Controle total de:**
+- Endereços IP
+- Sub-redes
+- Tabelas de rota
+- Regras de segurança
+
+Funciona como um data center virtual.
+
+Permite separar ambientes (prod, dev, teste).
+
+---
+
+## O que é uma sub-rede
+
+- Um “pedaço” da VPC para organizar recursos
+- Agrupa recursos com funções ou níveis de acesso semelhantes
+- Facilita controle de tráfego e segurança
+
+---
+
+## Sub-rede pública vs privada
+
+### Sub-rede pública
+- Possui rota para a internet
+- Usada por sites e APIs
+
+### Sub-rede privada
+- Sem acesso direto à internet
+- Usada por bancos de dados e sistemas internos
+
+👉 Distribuídas entre AZs para segurança, organização e alta disponibilidade.
 
