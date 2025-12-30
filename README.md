@@ -1290,3 +1290,151 @@ Os gateways são pontos de entrada e saída da sua rede na AWS. Cada tipo resolv
 
 - Conectar sub-rede privada a data center com tráfego seguro  
   **Gateway Privado Virtual**
+
+
+# Sub-redes, ACLs de Rede e Grupos de Segurança na VPC
+
+---
+
+Sub-redes organizam recursos dentro da VPC.  
+**ACLs de rede** controlam o tráfego no nível da sub-rede (**stateless**).  
+**Grupos de segurança** controlam o tráfego no nível do recurso (**stateful**).
+
+---
+
+## Objetivos da Lição
+
+- Descrever como o tráfego de rede funciona em uma VPC  
+- Explicar como funcionam grupos de segurança (stateful)  
+- Explicar como funcionam ACLs de rede (stateless)  
+- Definir quem protege sub-redes usando grupos de segurança e ACLs no modelo de responsabilidade compartilhada  
+
+---
+
+## Sub-redes (Públicas e Privadas)
+
+- **Sub-rede**: seção da VPC onde você agrupa recursos conforme necessidades operacionais e de segurança  
+- Podem ser **públicas** ou **privadas**
+
+**Exemplos:**
+- Sub-rede pública: recursos acessíveis ao público (ex.: site da loja)
+- Sub-rede privada: recursos acessíveis apenas pela rede privada (ex.: banco de dados de clientes)
+
+Você define regras para permitir comunicação entre sub-redes, como:
+- EC2 em sub-rede pública acessando banco de dados em sub-rede privada
+
+---
+
+## Tráfego de Rede na VPC
+
+- Um cliente faz uma requisição
+- A requisição vira um pacote
+- O pacote entra na VPC pelo gateway da internet
+- Antes de entrar ou sair de uma sub-rede, o pacote passa por verificações
+- A **ACL de rede** associada à sub-rede decide permitir ou negar o tráfego com base em:
+  - Origem
+  - Tipo de comunicação
+
+---
+
+## ACLs de Rede (Network ACLs)
+
+- Firewall virtual no nível da sub-rede
+- Controla tráfego de **entrada** e **saída**
+
+**Analogia:**
+- Viajantes (pacotes)
+- Oficial da alfândega (ACL)
+- Checagem ocorre tanto na entrada quanto na saída
+
+**Tipos:**
+- ACL padrão:
+  - Permite todo tráfego de entrada e saída até ser modificada
+- ACL personalizada:
+  - Nega todo tráfego por padrão
+  - Você precisa permitir explicitamente
+
+Todas as ACLs possuem uma **regra final de negação explícita**.
+
+---
+
+## ACLs de Rede — Stateless
+
+- Filtragem **stateless**
+- Não “lembram” de requisições anteriores
+- Cada pacote é avaliado individualmente
+- Verificação ocorre nos dois sentidos (entrada e saída)
+
+**Consequência:**
+- Para permitir tráfego de retorno, é necessário criar regras:
+  - De entrada
+  - De saída
+
+---
+
+## Grupos de Segurança
+
+- Firewall virtual no nível do recurso (ex.: instância EC2)
+- Controla tráfego de entrada e saída de recursos específicos
+
+**Comportamento padrão:**
+- Nega todo tráfego de entrada
+- Permite todo tráfego de saída
+
+**Analogia:**
+- Porteiro de um prédio
+- Confere a lista para entrada
+- Não precisa conferir para saída
+
+---
+
+## Grupos de Segurança — Stateful
+
+- Filtragem **stateful**
+- Lembram decisões anteriores
+- Se a entrada for permitida:
+  - O tráfego de resposta é automaticamente permitido
+  - Não precisa de regra adicional para retorno
+
+**Observações:**
+- Várias instâncias EC2 podem compartilhar o mesmo grupo de segurança
+- Ou usar grupos diferentes, conforme o nível de controle desejado
+
+---
+
+## Comparação Mental: Grupos de Segurança x ACLs
+
+- **Escopo**
+  - Grupo de segurança: instância
+  - ACL: sub-rede
+
+- **Estado**
+  - Grupo de segurança: stateful
+  - ACL: stateless
+
+- **Regras**
+  - Grupo de segurança: apenas permitir
+  - ACL: permitir e negar
+
+- **Tráfego de retorno**
+  - Grupo de segurança: permitido automaticamente
+  - ACL: precisa de regras nos dois sentidos
+
+---
+
+## Responsabilidade na Segurança
+
+No modelo de responsabilidade compartilhada:
+
+- Configurar:
+  - Grupos de segurança
+  - ACLs de rede
+- Proteger:
+  - Sub-redes
+  - Recursos dentro da VPC
+
+➡️ **Responsabilidade do cliente (você)**
+
+Esses componentes são as defesas essenciais para proteger o tráfego de rede e atender os requisitos de segurança das aplicações.
+
+<img width="759" height="531" alt="image" src="https://github.com/user-attachments/assets/c9084f54-ff75-401e-9f70-4c8d8b81f4dd" />
