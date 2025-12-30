@@ -1019,3 +1019,274 @@ Permite separar ambientes (prod, dev, teste).
 
 👉 Distribuídas entre AZs para segurança, organização e alta disponibilidade.
 
+# Amazon VPC, Gateways e Conectividade
+
+---
+
+Uma **VPC** é o “escudo” em volta dos seus recursos na AWS.  
+Dentro dela, você organiza tudo em **sub-redes** e controla o acesso usando **gateway da internet** e **gateway privado virtual (VPN)**.
+
+---
+
+## Objetivos da Lição
+
+- Definir o que é um gateway privado virtual e o que ele faz  
+- Identificar os principais componentes de uma VPC  
+- Definir o que é um gateway da internet e o que ele faz  
+
+---
+
+## Amazon VPC e Sub-redes
+
+### VPC (Virtual Private Cloud)
+
+- Seção isolada da nuvem AWS onde você cria sua própria rede virtual
+- Permite configurar:
+  - Endereços IP
+  - Sub-redes
+  - Tabelas de rotas
+  - Regras de segurança
+
+**Benefícios principais:**
+- Mais segurança (proteger, monitorar e restringir conexões)
+- Mais controle sobre posicionamento e conectividade
+- Menor tempo de configuração em comparação ao on-premises
+
+---
+
+### Sub-rede
+
+- Subseção da VPC onde ficam recursos como instâncias EC2
+- Usada para organizar e separar:
+  - Recursos públicos
+  - Recursos privados
+
+---
+
+## Gateway da Internet
+
+- Para permitir acesso da internet pública à VPC, é obrigatório anexar um gateway da internet à VPC
+- Funciona como a “porta da cafeteria”:
+  - Sem ele, ninguém da internet consegue acessar recursos na VPC
+  - Mesmo que os recursos existam e tenham IP público
+
+---
+
+## Gateway Privado Virtual e VPN
+
+- A internet é como uma rua pública aberta a todos
+- Isso não é aceitável para tráfego sensível entre a empresa e a AWS
+
+### VPN (Virtual Private Network)
+
+- Túnel seguro e criptografado pela internet
+- Esconde o tráfego de outros usuários e provedores
+
+### Gateway Privado Virtual
+
+- Componente na AWS que recebe o tráfego criptografado da VPN
+- Conecta esse tráfego à VPC
+- Aceita apenas tráfego vindo de redes aprovadas:
+  - Data center on-premises
+  - Rede corporativa
+
+---
+
+## Diferenças de Siglas (Fichas de Conceito)
+
+- **VPC (Virtual Private Cloud)**  
+  Nuvem privada virtual, o “escudo” que isola seus recursos
+
+- **Gateway privado virtual**  
+  Ponto seguro dentro da AWS onde a VPN termina
+
+- **Conexão VPN**  
+  Túnel criptografado entre sua rede e a VPC
+
+---
+
+## Dica de Prova
+
+Se a empresa quer conectar o data center corporativo à AWS pela internet, de forma segura e mantendo os recursos isolados do público, a melhor solução é:
+
+- Gateway privado virtual  
+- Conexão VPN  
+- Sub-rede privada na VPC  
+
+---
+
+# Formas de Conexão com a AWS
+
+Há quatro principais maneiras de se conectar à nuvem AWS nesta lição:
+
+- AWS Client VPN
+- AWS Site-to-Site VPN
+- AWS PrivateLink
+- AWS Direct Connect
+
+---
+
+## Objetivos da Lição (Conectividade)
+
+- Descrever AWS Client VPN e quando usar  
+- Descrever AWS Site-to-Site VPN e quando usar  
+- Descrever AWS PrivateLink e quando usar  
+- Descrever AWS Direct Connect e quando usar  
+
+---
+
+## AWS Client VPN
+
+- Serviço de VPN gerenciada para conectar:
+  - Profissionais remotos
+  - Redes on-premises
+- Totalmente gerenciado e elástico
+
+**Benefícios:**
+- Autenticação avançada
+- Acesso remoto seguro
+- Sem necessidade de gerenciar hardware
+- Escala automaticamente conforme o número de usuários
+
+**Caso de uso típico:**
+- Acesso seguro para muitos funcionários remotos aos recursos na AWS
+
+---
+
+## AWS Site-to-Site VPN
+
+- Conexão segura e criptografada entre:
+  - Data centers on-premises
+  - Filiais
+  - Amazon VPC
+
+**Benefícios:**
+- Alta disponibilidade
+- Sessões seguras e privadas
+- Melhor desempenho sobre conexão criptografada
+
+**Casos de uso:**
+- Migração de aplicações
+- Comunicação segura contínua entre sites e a VPC
+
+---
+
+## AWS PrivateLink
+
+- Conecta sua VPC de forma privada a serviços e recursos
+- Funciona como se os serviços estivessem dentro da própria VPC
+
+**Características:**
+- Não exige:
+  - Gateway da internet
+  - NAT
+  - IP público
+  - VPN
+  - Direct Connect
+
+**Benefícios:**
+- Tráfego protegido
+- Gerenciamento de acesso simplificado
+
+**Caso de uso:**
+- Expor serviços de forma privada para outras VPCs ou contas
+
+---
+
+## AWS Direct Connect
+
+- Conexão privada dedicada entre:
+  - Rede on-premises
+  - AWS
+
+**Características:**
+- Não passa pela internet pública
+
+**Benefícios:**
+- Menor latência
+- Conexão mais consistente
+- Maior largura de banda
+- Redução de custos de rede
+
+**Casos de uso:**
+- Aplicações sensíveis à latência
+- Migração ou transferência de grandes volumes de dados
+- Arquiteturas híbridas de longo prazo
+
+---
+
+## Dicas de Prova
+
+- Migração em grande escala + alta largura de banda + conexão híbrida contínua  
+  **Melhor opção:** AWS Direct Connect
+
+- Conectar data center corporativo a sub-rede privada, aceitando apenas tráfego protegido e aprovado  
+  **Melhor opção:** Gateway privado virtual + VPN Site-to-Site
+
+---
+
+# Tipos de Gateways na AWS
+
+Os gateways são pontos de entrada e saída da sua rede na AWS. Cada tipo resolve um problema específico.
+
+---
+
+## Gateway da Internet
+
+- Permite comunicação entre:
+  - Recursos em sub-rede pública
+  - Internet pública
+- Sem ele, não há tráfego direto de/para a internet
+
+---
+
+## Gateway Privado Virtual
+
+- Termina uma VPN Site-to-Site dentro da VPC
+- Aceita apenas tráfego criptografado e de redes aprovadas
+- Ideal para conectar sub-redes privadas a redes on-premises
+
+---
+
+## AWS Transit Gateway
+
+- Conecta múltiplas VPCs e redes on-premises em um hub central
+- Simplifica o roteamento em ambientes grandes
+
+**Destaque:**
+- Suporta peering inter-regional usando a infraestrutura global da AWS
+
+---
+
+## Gateway NAT
+
+- Permite que instâncias em sub-redes privadas:
+  - Acessem a internet
+  - Consumam serviços externos
+
+**Características:**
+- Tráfego apenas de saída
+- Nenhuma conexão pode ser iniciada da internet para as instâncias
+
+---
+
+## Amazon API Gateway
+
+- Serviço gerenciado para criar, publicar e proteger APIs
+- Atua como “porta de entrada” lógica das APIs
+
+**Função:**
+- Controlar como sistemas externos acessam aplicações na AWS
+
+---
+
+## Dica Final de Prova (Gateways)
+
+- Conectar sub-rede privada à internet com saída apenas  
+  **Gateway NAT**
+
+- Permitir acesso direto da internet a recursos públicos  
+  **Gateway da Internet**
+
+- Conectar sub-rede privada a data center com tráfego seguro  
+  **Gateway Privado Virtual**
