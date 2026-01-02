@@ -1438,3 +1438,284 @@ No modelo de responsabilidade compartilhada:
 Esses componentes são as defesas essenciais para proteger o tráfego de rede e atender os requisitos de segurança das aplicações.
 
 <img width="759" height="531" alt="image" src="https://github.com/user-attachments/assets/c9084f54-ff75-401e-9f70-4c8d8b81f4dd" />
+
+
+# Arquiteturas Globais
+
+---
+
+## 1. Quando usar VPN ou Direct Connect
+
+### VPN (Virtual Private Network)
+
+- Conexão criptografada pela internet
+- Menor custo
+- Menor largura de banda
+- Indicada para dados menos críticos
+
+---
+
+### AWS Direct Connect
+
+- Conexão dedicada (linha física)
+- Maior largura de banda
+- Desempenho crítico para aplicações
+- Melhor para dados sensíveis e requisitos de conformidade
+
+---
+
+## 2. Funcionamento em Alto Nível (VPN e Direct Connect)
+
+### Funcionamento Conjunto
+
+- Ambas conectam:
+  - Data center corporativo → AWS
+- VPN:
+  - Usa a internet pública
+  - Tráfego criptografado
+- Direct Connect:
+  - Conexão privada dedicada
+  - Termina em um gateway privado virtual
+- Podem ser usadas simultaneamente para:
+  - Failover
+  - Redundância
+
+---
+
+### Caso de Uso: Failover com Direct Connect
+
+- Múltiplas conexões Direct Connect para redundância
+- Agregação de largura de banda:
+  - Combinar vários Direct Connects
+- Essencial para:
+  - Transferências pesadas de dados
+  - Ambientes corporativos críticos
+
+---
+
+## 3. Arquitetura Multirregional com CloudFront e Route 53
+
+### Amazon CloudFront
+
+- Entrega conteúdo para múltiplas regiões
+- Cache em edge locations
+- Baixa latência
+- Distribuição global de conteúdo
+
+---
+
+### Amazon Route 53
+
+- Serviço DNS
+- Direciona tráfego para diferentes regiões
+- Roteamento inteligente de requisições
+- Atua em conjunto com o CloudFront
+
+---
+
+### Application Load Balancer + Auto Scaling
+
+- Balanceia carga de requisições
+- Distribui tráfego entre instâncias
+- Escala instâncias EC2 sob demanda
+
+---
+
+# Resumo de Recursos — Módulo 5: Redes
+
+## Recursos de Infraestrutura de Rede
+
+### 1. Amazon Virtual Private Cloud (VPC)
+
+- Seção logicamente isolada da nuvem AWS
+- Permite criar redes virtuais personalizadas
+- Base de toda a arquitetura de rede na AWS
+
+---
+
+### 2. Sub-rede (Subnet)
+
+- Seção de uma VPC que contém recursos
+- Organiza e compartimentaliza recursos
+- Pode ser:
+  - Pública (com acesso à internet)
+  - Privada (sem acesso direto)
+
+---
+
+### 3. Gateway da Internet
+
+- Conecta a VPC à internet
+- Permite tráfego público de entrada e saída
+- Essencial para recursos públicos
+
+---
+
+### 4. Gateway Privado Virtual
+
+- Permite tráfego protegido da internet para a VPC
+- Conecta VPC a redes privadas aprovadas
+- Usado em conexões VPN seguras
+
+---
+
+## Serviços de Conectividade
+
+### 5. AWS Client VPN
+
+- Conecta trabalhadores remotos à AWS
+- Serviço VPN totalmente gerenciado
+- Escala automaticamente conforme usuários
+
+---
+
+### 6. AWS Site-to-Site VPN
+
+- Conexão segura entre:
+  - Data center
+  - Filiais
+  - AWS
+- Criptografada pela internet pública
+
+---
+
+### 7. AWS PrivateLink
+
+- Conexão privada entre VPCs e serviços
+- Não usa internet pública
+- Faz os serviços parecerem locais à VPC
+
+---
+
+### 8. AWS Direct Connect
+
+- Conexão privada dedicada
+- Alta largura de banda
+- Desempenho consistente
+- Conexão exclusiva
+
+---
+
+## Recursos de Segurança
+
+### 9. Network ACLs (ACLs de Rede)
+
+- Controlam tráfego de entrada e saída
+- Nível da sub-rede
+- Filtragem stateless
+- Permitem e negam tráfego explicitamente
+
+---
+
+### 10. Grupos de Segurança
+
+- Controlam tráfego no nível da instância
+- Filtragem stateful
+- Permitem apenas regras de autorização
+- Mais próximos do recurso protegido
+
+---
+
+## DNS e Distribuição de Conteúdo
+
+### 11. DNS (Sistema de Nomes de Domínio)
+
+- Traduz nomes legíveis em endereços IP
+- Exemplo:
+  - www.exemplo.com → 192.0.2.0
+
+---
+
+### 12. Amazon Route 53
+
+- Serviço DNS escalável
+- Direciona usuários para aplicações
+- Suporta:
+  - Registro de domínios
+  - Health checks
+  - Roteamento avançado
+
+---
+
+### 13. Amazon CloudFront
+
+- CDN global da AWS
+- Cache em edge locations
+- Baixa latência
+- Alta velocidade de entrega
+
+---
+
+## Serviços Avançados de Rede
+
+### 14. AWS Global Accelerator
+
+- Melhora desempenho e disponibilidade global
+- Usa a rede global da AWS
+- Ideal para aplicações críticas globais
+
+---
+
+### 15. Amazon Transit Gateway
+
+- Hub central de conectividade
+- Conecta múltiplas VPCs e redes on-premises
+- Simplifica arquiteturas complexas
+
+---
+
+### 16. Gateway NAT
+
+- Permite saída para a internet a partir de sub-redes privadas
+- Não permite conexões iniciadas externamente
+- Mantém instâncias privadas protegidas
+
+---
+
+### 17. Amazon API Gateway
+
+- Criação e gerenciamento de APIs
+- Altamente escalável
+- Protege e monitora chamadas de API
+- Gerencia todo o fluxo de requisições
+
+---
+
+## Tabela Comparativa Rápida
+
+- **Security Groups**
+  - Nível: Instância
+  - Tipo: Stateful
+  - Uso: Proteção individual de recursos
+
+- **Network ACLs**
+  - Nível: Sub-rede
+  - Tipo: Stateless
+  - Uso: Controle de tráfego em nível de rede
+
+- **VPN (Client)**
+  - Nível: Acesso remoto
+  - Tipo: Criptografado
+  - Uso: Trabalhadores remotos
+
+- **VPN (Site-to-Site)**
+  - Nível: Filial / Data center
+  - Tipo: Criptografado
+  - Uso: Integração on-premises
+
+- **Direct Connect**
+  - Nível: Dedicado
+  - Tipo: Privado
+  - Uso: Alta largura de banda e conformidade
+
+- **CloudFront**
+  - Nível: Global
+  - Tipo: Cache
+  - Uso: Distribuição de conteúdo
+
+- **Route 53**
+  - Nível: Global
+  - Tipo: DNS
+  - Uso: Roteamento de tráfego
+
+
