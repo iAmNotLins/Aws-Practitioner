@@ -1719,3 +1719,158 @@ Esses componentes são as defesas essenciais para proteger o tráfego de rede e 
   - Uso: Roteamento de tráfego
 
 
+# Introdução ao Armazenamento
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Conceitos de Armazenamento
+
+### Armazenamento em Blocos
+
+- Volume de baixa latência ligado à instância EC2
+- Funciona como um “HD” ou SSD
+- Ideal para:
+  - Dados estruturados
+  - Disco do sistema
+  - Bancos de dados
+
+### Armazenamento de Objetos
+
+- Dados guardados como objetos em espaço de endereçamento plano
+- Altíssima escalabilidade
+- Metadados ricos
+- Ideal para:
+  - Dados não estruturados
+  - Logs
+  - Imagens
+  - Backups
+
+### Armazenamento de Arquivos
+
+- Sistema de arquivos compartilhado via rede
+- Permite múltiplas instâncias ou usuários acessando os mesmos arquivos simultaneamente
+
+---
+
+## Serviços AWS por Tipo de Armazenamento
+
+### Blocos
+
+- Armazenamento de instância do Amazon EC2
+  - Não gerenciado
+  - Temporário
+  - Alto desempenho
+- Amazon EBS
+  - Serviço gerenciado
+  - Volumes persistentes
+
+### Objetos
+
+- Amazon S3
+  - Serviço principal de armazenamento de objetos
+  - Totalmente gerenciado
+  - Altamente escalável
+
+### Arquivos
+
+- Amazon EFS
+  - NFS totalmente gerenciado
+- Amazon FSx
+  - Sistemas de arquivos como:
+    - Windows
+    - Lustre
+    - NetApp ONTAP
+
+---
+
+## Modelo de Responsabilidade Compartilhada no Armazenamento
+
+- Os serviços de armazenamento podem ser:
+  - Totalmente gerenciados
+  - Gerenciados
+  - Não gerenciados
+- A divisão de responsabilidades varia conforme o serviço:
+  - Infraestrutura
+  - Patching
+  - Administração
+
+### Responsabilidades
+
+- Cliente:
+  - Segurança dentro da nuvem
+  - Configurações
+  - Controle de acesso
+  - Criptografia de dados
+- AWS:
+  - Segurança da nuvem
+  - Infraestrutura física
+  - Fundação dos serviços
+
+---
+
+# Armazenamento de Instâncias do EC2 e Amazon Elastic Block Store (Amazon EBS)
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Armazenamento de Instância do Amazon EC2
+
+### Características
+
+- Armazenamento local em blocos
+- Fisicamente conectado ao host da instância EC2
+- Não é um serviço separado da AWS
+
+### Comportamento dos Dados
+
+- Dados são temporários
+- Se a instância for interrompida ou encerrada:
+  - Todo o conteúdo é perdido
+
+### Casos de Uso
+
+- Buffers
+- Caches
+- Arquivos temporários
+- Workloads que toleram perda de dados
+
+### Benefícios
+
+- Alta performance de E/S
+- Custo reduzido
+- Disponível automaticamente em muitos tipos de instância
+
+---
+
+## Amazon Elastic Block Store (Amazon EBS)
+
+### Características
+
+- Serviço de armazenamento em blocos persistente
+- Anexado a instâncias EC2 como um disco externo
+
+### Persistência dos Dados
+
+- Dados permanecem mesmo se a instância for interrompida ou encerrada
+- Desde que o volume não seja excluído
+
+### Casos de Uso
+
+- Bancos de dados
+- Sistemas de arquivos
+- Backups
+- Ambientes de desenvolvimento clonados a partir de snapshots
+
+### Benefícios
+
+- Baixa latência consistente
+- Redimensionamento de volumes
+- Criação de snapshots
+- Movimentação entre instâncias
+- Suporte a:
+  - Migração
+  - Recuperação de desastres
+  - Ajuste de performance e custos
