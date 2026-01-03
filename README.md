@@ -2453,3 +2453,88 @@ Nesta lição, você aprenderá a:
   - Arquivamento
   - Backup
   - Recuperação de desastres
+
+
+# AWS Elastic Disaster Recovery
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Descrição do AWS Elastic Disaster Recovery
+
+### Visão Geral
+
+- Serviço que replica workloads críticas para a AWS
+- Replicação contínua de dados em nível de bloco dos servidores para a AWS
+- Proporciona mínimo tempo de inatividade durante falhas ou interrupções
+
+### Compatibilidade
+
+- Suporta:
+  - Servidores físicos
+  - Servidores virtuais
+- Permite recuperação rápida durante interrupções
+- Especialmente valioso para setores onde a disponibilidade é crítica, como saúde
+
+### Benefícios Operacionais
+
+- Reduz:
+  - Tempo de inatividade
+  - Perda de dados
+- Elimina custos associados à manutenção de data centers secundários
+- Permite testes de recuperação de desastres sem interrupções
+- Capaz de iniciar instâncias de recuperação rapidamente quando necessário
+
+---
+
+## Benefícios do AWS Elastic Disaster Recovery
+
+### Resiliência Empresarial
+
+- Mantém operações comerciais ativas
+- Replicação contínua de dados em nível de bloco
+- Recuperação de workloads em minutos durante interrupções
+
+### Recuperação de Desastres Simplificada
+
+- Automação dos processos de recuperação de desastres
+- Console intuitivo
+- Redução de configurações manuais complexas
+- Minimiza o risco de erro humano
+
+### Otimização de Custos
+
+- Elimina necessidade de data centers secundários caros
+- Modelo de pagamento conforme o uso
+- Investimento inicial mínimo
+- Sem custos de infraestrutura em espera
+
+---
+
+## Casos de Uso do AWS Elastic Disaster Recovery
+
+### Proteção de Dados de Saúde
+
+- Sistemas hospitalares utilizam para:
+  - Manter conformidade
+  - Proteger registros de pacientes
+- Replicação de servidores on-premises para a AWS
+- Garantia de acesso a dados médicos essenciais durante interrupções
+
+### Continuidade dos Serviços Financeiros
+
+- Bancos utilizam para:
+  - Proteger aplicações bancárias
+  - Replicar continuamente sistemas de processamento de transações
+- Facilita recuperação rápida
+- Mantém a confiança do cliente
+
+### Recuperação de Operações de Manufatura
+
+- Fabricantes utilizam para:
+  - Proteger sistemas de planejamento de produção
+  - Replicar sistemas de gerenciamento de fábrica para a AWS
+- Garante mínima interrupção:
+  - Nas operações
+  - Na cadeia de suprimentos
