@@ -2538,3 +2538,297 @@ Nesta lição, você aprenderá a:
 - Garante mínima interrupção:
   - Nas operações
   - Na cadeia de suprimentos
+
+## 📌 ANOTAÇÕES – MÓDULO 7: BANCOS DE DADOS
+
+### Título da Página
+**Serviços de banco de dados relacional**
+
+---
+
+## O QUE VOCÊ APRENDERÁ
+
+---
+
+## 1. Bancos de Dados Relacionais
+
+- Armazenam dados relacionando-os entre si
+- Utilizam SQL (Structured Query Language) para gerenciar e consultar dados
+- Adequados para aplicações que exigem dados estruturados, consistentes e escaláveis
+
+### Estrutura
+
+- Esquema rígido
+- Dados organizados em:
+  - Tabelas
+  - Linhas
+  - Colunas
+- Relações bem definidas entre tabelas
+
+---
+
+## 2. Amazon Relational Database Service (Amazon RDS)
+
+### O que faz
+
+- Serviço de banco de dados relacional **gerenciado**
+- Automatiza tarefas operacionais:
+  - Backups
+  - Patches
+  - Provisionamento de hardware
+- Mantém alta disponibilidade e segurança
+
+### Características Principais
+
+- Suporte a diferentes classes de instâncias:
+  - Otimizadas para memória
+  - Desempenho
+  - Entrada/Saída (E/S)
+- Compatível com os mecanismos:
+  - Amazon Aurora
+  - MySQL
+  - PostgreSQL
+  - Microsoft SQL Server
+  - MariaDB
+  - Oracle Database
+
+### Resiliência e Segurança
+
+- Implantação Multi-AZ
+- Backups automatizados
+- Snapshots manuais
+- Isolamento de rede
+- Criptografia em trânsito e em repouso
+- Escalabilidade vertical e horizontal
+
+### Casos de Uso
+
+- Aplicativos web
+- Workloads corporativos
+- Inventários de e-commerce
+
+### Benefícios
+
+| Benefício | Descrição |
+|---------|-----------|
+| Otimização de custos | Reduz necessidade de infraestrutura própria |
+| Implantação Multi-AZ | Alta disponibilidade e redundância |
+| Otimização de desempenho | Instâncias adequadas a diferentes cargas |
+| Controles de segurança | Isolamento, criptografia e IAM |
+
+---
+
+## 3. Amazon Aurora
+
+### O que faz
+
+- Banco de dados relacional **gerenciado e otimizado**
+- Projetado para reduzir operações de E/S
+- Alto desempenho com adaptação automática à workload
+
+### Características Principais
+
+- Compatível com MySQL e PostgreSQL
+- Replicação avançada em múltiplas AZs
+- Tolerância a falhas com recuperação automática
+- Backups automatizados com criptografia
+- Monitoramento contínuo
+- Até 5x mais throughput que MySQL padrão
+- Scaling automático integrado
+
+### Casos de Uso
+
+- Aplicações de jogos
+- Gerenciamento de mídia e conteúdo
+- Analytics em tempo real
+- Sistemas com alto volume transacional
+
+### Benefícios
+
+| Benefício | Descrição |
+|---------|-----------|
+| Alto desempenho | Armazenamento otimizado |
+| Backup automatizado | Sem intervenção manual |
+| Alta disponibilidade | Replicação e failover automático |
+
+---
+
+## RESUMO COMPARATIVO
+
+| Aspecto | Amazon RDS | Amazon Aurora |
+|------|-----------|---------------|
+| Foco | Gerenciamento | Performance |
+| Performance | Padrão | Até 5x superior |
+| Engines | MySQL, PostgreSQL, Oracle, SQL Server, MariaDB | MySQL, PostgreSQL |
+| Escalabilidade | Manual | Automática |
+| Ideal para | Workloads tradicionais | Alta transação |
+
+---
+
+# Serviços de Banco de Dados NoSQL
+
+---
+
+## Bancos de Dados NoSQL
+
+- Não relacionais
+- Esquemas flexíveis
+- Dados organizados em pares chave–valor ou documentos
+- Ideal para:
+  - Evolução rápida do modelo de dados
+  - Grandes volumes de informação
+  - Estruturas simples
+
+---
+
+## Amazon DynamoDB
+
+### Descrição
+
+- Banco NoSQL totalmente gerenciado
+- Trabalha com:
+  - Chave–valor
+  - Documentos
+- Alto desempenho previsível em grande escala
+
+### Características
+
+- Gerencia automaticamente:
+  - Capacidade
+  - Distribuição
+  - Performance
+- Escala automaticamente com o tráfego
+- Modelo de cobrança sob demanda
+
+### Benefícios
+
+- Auto Scaling de leitura e gravação
+- Alta disponibilidade e durabilidade
+- Criptografia e segurança integradas
+- Ideal para:
+  - Jogos online
+  - Apps móveis
+  - Sistemas financeiros
+
+---
+
+# Demonstrações – Módulo 7
+
+---
+
+## Amazon RDS
+
+- Criar instância via Console AWS
+- Definir engine, tamanho, segurança e disponibilidade
+- Usar SQL para:
+  - Criar tabelas
+  - Definir colunas
+  - Inserir dados
+
+---
+
+## Amazon DynamoDB
+
+- Criar tabela pelo console
+- Definir chave primária
+- Inserir e visualizar itens
+- Validar estrutura e comportamento NoSQL
+
+---
+
+# Armazenamento em Cache em Memória
+
+---
+
+## Conceito de Cache em Memória
+
+- Armazenamento de alta velocidade em RAM
+- Acesso centenas ou milhares de vezes mais rápido que disco
+- Reduz carga no banco principal
+- Ideal para:
+  - Sessões
+  - Respostas de API
+  - Consultas repetidas
+
+---
+
+## Amazon ElastiCache
+
+### Descrição
+
+- Serviço de cache em memória totalmente gerenciado
+- Suporte a:
+  - Redis
+  - Valkey
+  - Memcached
+
+### Características
+
+- Alta disponibilidade
+- Replicação Multi-AZ
+- Substituição automática de nós
+- Criptografia de dados
+
+### Benefícios e Casos de Uso
+
+- Baixa latência
+- Alta performance
+- Gerenciamento de sessões
+- Aceleração de consultas
+- Rankings em jogos
+
+### Problema Resolvido
+
+- Elimina gargalos de latência e throughput
+- Reduz carga do banco de dados primário
+
+---
+
+# Serviços de Banco de Dados Adicionais
+
+---
+
+## Amazon DocumentDB
+
+- Banco de documentos compatível com MongoDB
+- Dados semiestruturados em JSON
+- Auto Scaling e backup contínuo
+
+### Casos de Uso
+
+- CMS
+- Catálogos
+- Perfis de usuário
+- Inventários dinâmicos
+
+---
+
+## AWS Backup
+
+- Centraliza e automatiza backups
+- Suporte a:
+  - Amazon EBS
+  - Amazon EFS
+  - Bancos de dados
+- Políticas padronizadas e conformidade
+
+### Casos de Uso
+
+- Recuperação de desastres
+- Backup centralizado
+- Governança de dados
+
+---
+
+## Amazon Neptune
+
+- Banco de dados de grafos totalmente gerenciado
+- Projetado para dados altamente conectados
+- Alta performance e baixa latência
+
+### Casos de Uso
+
+- Redes sociais
+- Detecção de fraudes
+- Sistemas de recomendação
+- Pesquisa relacional
