@@ -2109,3 +2109,347 @@ Nesta lição, você aprenderá a:
 - Dados que perdem valor com o tempo
 - Requisitos de retenção regulatória
 - Arquivamento seguido de exclusão
+
+# Amazon Elastic File System (Amazon EFS)
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Descrição do Amazon EFS
+
+### Características
+
+- Serviço de armazenamento de arquivos totalmente gerenciado e dimensionável
+- Usa protocolo Linux NFS
+- Escala automaticamente para petabytes conforme arquivos são adicionados ou removidos
+
+### Acesso e Escalabilidade
+
+- Suporta múltiplas instâncias EC2 acessando simultaneamente o mesmo sistema de arquivos
+- Ideal para:
+  - Workloads colaborativas
+  - Aplicações distribuídas
+
+### Operação e Custos
+
+- Elimina tarefas operacionais
+- A AWS gerencia:
+  - Escalabilidade
+  - Replicação
+  - Backup
+  - Manutenção
+- Pagamento apenas pelo armazenamento utilizado
+
+### Casos de Uso
+
+- Análise de grandes volumes de dados
+- Aplicações distribuídas que precisam escalar
+- Ambientes colaborativos com várias instâncias
+
+---
+
+## Classes de Armazenamento do Amazon EFS
+
+### Classes Standard
+
+- EFS Standard
+- EFS Standard-IA
+- Características:
+  - Resiliência Multi-AZ
+  - Alta durabilidade
+  - Alta disponibilidade
+- Custo mais elevado
+
+### Classes de Uma Zona
+
+- Alternativa de menor custo
+- Indicada para dados que não exigem resiliência Multi-AZ
+
+### Classe Archive
+
+- Armazenamento mais econômico
+- Ideal para dados acessados raramente
+  - Poucas vezes por ano ou menos
+
+### Otimização de Custos
+
+- A escolha da classe depende do padrão de acesso dos dados
+- Não há taxa mínima ou de instalação
+
+---
+
+## Políticas de Ciclo de Vida do Amazon EFS
+
+### Automação de Transições
+
+- Políticas automatizam a movimentação de dados entre classes
+- Reduzem custos sem intervenção manual
+
+### Regras Padrão
+
+- Transição para IA:
+  - Arquivos não acessados por 30 dias
+  - Movidos para Standard-IA
+- Transição para Archive:
+  - Arquivos não acessados por 90 dias
+  - Movidos para Archive
+- Transição para Standard:
+  - Arquivos acessados em IA ou Archive podem retornar ao Standard
+  - Configurável (por padrão permanecem na classe anterior)
+
+### Personalização
+
+- Políticas podem ser ajustadas conforme:
+  - Necessidade de retenção
+  - Frequência de acesso aos dados
+
+---
+
+## Integração do Amazon EFS com Serviços AWS
+
+### Integração Nativa
+
+- Integração transparente com serviços AWS
+- Elimina a necessidade de provisionar ou gerenciar servidores de arquivos
+
+### Comparação com Amazon EBS
+
+- EBS:
+  - Disco virtual
+  - Limitado a uma Zona de Disponibilidade
+  - Expansão manual de capacidade
+- EFS:
+  - Sistema de arquivos completo
+  - Não limitado a uma única Zona
+  - Escala automaticamente sem provisionamento manual
+
+### Alta Disponibilidade
+
+- Redundância Multi-AZ
+- Replicação automática dos dados
+- Proteção contra falhas de Zona de Disponibilidade
+
+---
+
+# Amazon FSx
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Descrição do Amazon FSx
+
+### Características Gerais
+
+- Serviço para lançar, executar e escalar sistemas de arquivos de alto desempenho
+- Econômico e rico em recursos
+- Totalmente gerenciado:
+  - Provisionamento
+  - Patches
+  - Backups
+
+### Diferenciais
+
+- Suporte a múltiplos protocolos de sistema de arquivos
+- Desenvolvido com tecnologias AWS modernas
+- Menor custo total de propriedade (TCO)
+- Alta confiabilidade, segurança e escalabilidade
+
+---
+
+## Opções de Sistema de Arquivos do Amazon FSx
+
+### Amazon FSx para Windows File Server
+
+- Armazenamento compartilhado baseado em Windows Server
+- Suporte ao protocolo SMB
+- Integração com Microsoft Active Directory
+
+#### Casos de Uso
+
+- Migração de servidores de arquivos Windows
+- Workloads híbridas
+- Redução de custos do SQL Server
+- Desktops virtuais
+- Streaming
+
+---
+
+### Amazon FSx para NetApp ONTAP
+
+- Armazenamento compartilhado gerenciado
+- Recursos avançados de acesso e gerenciamento de dados do ONTAP
+
+#### Casos de Uso
+
+- Migração de workloads
+- Aplicações modernas
+- Modernização de gerenciamento de dados
+- Continuidade de negócios
+
+---
+
+### Amazon FSx para OpenZFS
+
+- Armazenamento baseado no sistema OpenZFS
+- Acesso via protocolos:
+  - NFS v3
+  - NFS v4
+  - NFS v4.1
+  - NFS v4.2
+
+#### Casos de Uso
+
+- Migração de workloads
+- Analytics de big data
+- Gerenciamento de conteúdo
+- Aceleração de ambientes dev/test
+
+---
+
+### Amazon FSx para Lustre
+
+- Sistema de arquivos de alto desempenho e escalável
+- Ideal para computação intensiva
+
+#### Casos de Uso
+
+- Machine learning (ML)
+- Computação de alto desempenho (HPC)
+- Análise de big data
+- Workloads de mídia
+
+---
+
+## Modelo de Gerenciamento do Amazon FSx
+
+### Integração de Sistemas de Arquivos
+
+- Suporte a protocolos padrão do setor
+- Integração simples com:
+  - Aplicações existentes
+  - Fluxos de trabalho
+  - Ferramentas de desenvolvimento
+
+### Infraestrutura Gerenciada
+
+- Redução da complexidade operacional
+- Mantém recursos avançados de sistemas tradicionais
+
+### Armazenamento Dimensionável
+
+- Ajuste dinâmico de recursos
+- Elimina planejamento complexo de capacidade
+
+### Otimização de Custos
+
+- Classificação automática por níveis
+- Cobrança apenas pelo armazenamento utilizado
+- Dados pouco acessados movidos para camadas mais econômicas
+
+---
+
+# AWS Storage Gateway
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Descrição do AWS Storage Gateway
+
+### Conceito
+
+- Serviço de armazenamento híbrido
+- Conecta infraestrutura on-premises à nuvem AWS
+- Fornece acesso local a armazenamento em nuvem praticamente ilimitado
+
+### Benefícios
+
+- Integração entre ambientes locais e AWS
+- Acesso de baixa latência a dados frequentemente usados
+- Simplificação do gerenciamento de armazenamento
+- Redução de custos em cenários híbridos
+
+### Casos de Uso
+
+- Migração de backups para a nuvem
+- Compartilhamentos de arquivos on-premises apoiados pela AWS
+- Acesso local a dados armazenados na AWS
+
+---
+
+## Tipos de Gateway do AWS Storage Gateway
+
+### Amazon S3 File Gateway
+
+- Conecta ambiente local ao Amazon S3
+- Acesso via protocolos de arquivo familiares
+- Aparece como servidor de arquivos padrão
+
+#### Funcionamento
+
+- Arquivos gravados localmente são enviados ao S3
+- Cache inteligente mantém dados acessados recentemente
+- Aplicações continuam operando normalmente
+
+---
+
+### Gateway de Volumes
+
+- Cria volumes de armazenamento virtual
+- Apresenta dados como volumes iSCSI
+
+#### Modos de Operação
+
+- Modo cache:
+  - Dados primários na nuvem
+  - Cache local para acesso frequente
+- Modo armazenado localmente:
+  - Dados mantidos localmente
+  - Backup assíncrono na nuvem via snapshots EBS
+
+---
+
+### Gateway de Fitas
+
+- Substitui infraestrutura física de fitas
+- Utiliza fitas virtuais armazenadas na AWS
+
+#### Características
+
+- Se apresenta como hardware de fita padrão
+- Software de backup grava dados em fitas virtuais
+- Dados armazenados no Amazon S3
+- Transição automática para classes mais econômicas para retenção de longo prazo
+
+---
+
+## Benefícios do AWS Storage Gateway para Ambientes Híbridos
+
+### Integração
+
+- Conectividade suave entre aplicações on-premises e AWS
+- Preserva fluxos de trabalho existentes
+- Minimiza interrupções
+
+### Gerenciamento de Dados
+
+- Gerenciamento centralizado
+- Melhora:
+  - Acessibilidade
+  - Segurança
+  - Conformidade
+
+### Cache Local
+
+- Mantém dados acessados frequentemente no ambiente local
+- Dados menos usados são gerenciados na nuvem
+
+### Otimização de Custos
+
+- Reduz custos de armazenamento on-premises
+- Uso da nuvem para:
+  - Arquivamento
+  - Backup
+  - Recuperação de desastres
