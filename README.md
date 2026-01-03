@@ -1874,3 +1874,238 @@ Nesta lição, você aprenderá a:
   - Migração
   - Recuperação de desastres
   - Ajuste de performance e custos
+# Ciclo de Vida de Dados do Amazon Elastic Block Store (Amazon EBS)
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Snapshots do Amazon EBS
+
+### O que são Snapshots
+
+- Snapshots do EBS são backups pontuais de um volume EBS
+- Capturam o estado do disco em um momento específico
+
+### Características
+
+- São incrementais
+- Após o primeiro snapshot completo:
+  - Apenas blocos alterados desde o snapshot anterior são salvos
+- Reduzem:
+  - Custo
+  - Tempo de backup
+
+### Casos de Uso
+
+- Recuperação de desastres
+- Migração de dados
+- Redimensionamento de volumes
+- Criação de ambientes de teste idênticos à produção
+
+### Criação de Volumes a partir de Snapshots
+
+- A partir de um snapshot é possível criar vários novos volumes
+- Todos são cópias fiéis do volume original naquele momento
+
+---
+
+## Ciclo de Vida dos Dados do Amazon EBS
+
+### Etapas do Ciclo de Vida
+
+- Criação de volumes
+- Geração de snapshots regulares
+- Armazenamento redundante dos snapshots (usando Amazon S3)
+- Exclusão de dados que não são mais necessários
+
+### Benefícios do Ciclo de Vida
+
+- Otimização de custos de armazenamento
+- Reforço da proteção dos dados
+
+### Integração com Serviços AWS
+
+- Snapshots podem ser usados para:
+  - Restaurar volumes
+  - Clonar ambientes
+  - Suportar estratégias de alta disponibilidade
+  - Recuperação em outros recursos da AWS
+
+---
+
+## Responsabilidades do Cliente: Snapshots do EBS e Amazon Data Lifecycle Manager
+
+### Modelo de Responsabilidade Compartilhada
+
+- O cliente é responsável por:
+  - Planejar snapshots
+  - Agendar snapshots
+  - Gerenciar snapshots como parte da estratégia de backup
+
+### Responsabilidades Específicas
+
+- Monitorar custos de snapshots
+- Excluir backups antigos
+- Garantir criptografia de dados sensíveis
+- Testar rotinas de restauração
+
+### Amazon Data Lifecycle Manager
+
+- Automatiza:
+  - Criação de snapshots
+  - Retenção de snapshots
+  - Exclusão de snapshots
+  - Criação e gerenciamento de AMIs baseadas em EBS
+- O cliente ainda define:
+  - Políticas
+  - Janelas de backup
+  - Requisitos de conformidade
+
+### Benefícios
+
+- Redução do esforço manual
+- Backups regulares
+- Regras de retenção alinhadas:
+  - Às normas da empresa
+  - Às exigências regulatórias
+
+---
+
+# Amazon Simple Storage Service (Amazon S3)
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Descrição do Amazon S3
+
+### Características
+
+- Serviço de armazenamento de objetos totalmente gerenciado
+- Durabilidade de 99,999999999%
+- Capacidade praticamente ilimitada
+
+### Modelo de Armazenamento
+
+- Armazena dados como objetos dentro de buckets
+- Tamanho dos objetos:
+  - De alguns bytes
+  - Até vários terabytes
+- Ideal para dados não estruturados:
+  - Documentos
+  - Imagens
+  - Vídeos
+  - Logs
+
+### Casos de Uso
+
+- Backups
+- Arquivos estáticos de sites
+- Data lakes
+- Conteúdo de aplicativos móveis
+- Mídia distribuída globalmente
+
+### Benefícios
+
+- Alta durabilidade
+- Alta disponibilidade
+- Integração com diversos serviços AWS
+- Suporte a:
+  - Múltiplas classes de armazenamento
+  - Políticas de ciclo de vida para otimização de custos
+
+---
+
+## Gerenciamento de Segurança no Amazon S3
+
+### Acesso e Permissões
+
+- Tudo no S3 é privado por padrão
+- Acesso público ou compartilhado exige configuração explícita
+
+### Políticas de Segurança
+
+- Políticas de bucket (baseadas em recurso):
+  - Definem quem pode realizar ações no bucket e nos objetos
+- Políticas baseadas em identidade (IAM):
+  - Controlam o que usuários e funções podem fazer em buckets e objetos
+
+### Atributos Adicionais de Segurança
+
+- Criptografia de dados em repouso
+- Bloqueio de acesso público
+- Controles finos de ACL
+- Garantia de:
+  - Segurança
+  - Privacidade dos dados
+
+---
+
+# Classes de Armazenamento e Ciclo de Vida do Amazon S3
+
+Nesta lição, você aprenderá a:
+
+---
+
+## Classes de Armazenamento do Amazon S3
+
+### Visão Geral
+
+- O Amazon S3 oferece várias classes de armazenamento
+- Objetivo:
+  - Equilibrar custo
+  - Desempenho
+  - Resiliência
+  - Padrão de acesso aos dados
+
+### Adequação por Cenário
+
+- Acesso frequente
+- Acesso pouco frequente
+- Arquivamento
+- Requisitos de residência de dados
+- Padrões de acesso imprevisíveis
+
+### Classe Padrão
+
+- Se nenhuma classe for escolhida no upload:
+  - O objeto é armazenado no S3 Standard
+- S3 Standard:
+  - Classe de uso geral
+  - Alta durabilidade
+  - Baixa latência
+
+---
+
+## Políticas de Ciclo de Vida do Amazon S3
+
+### Conceito
+
+- Políticas de ciclo de vida automatizam:
+  - Transição de objetos entre classes
+  - Expiração (exclusão) de objetos
+- Baseadas em:
+  - Idade
+  - Uso dos dados
+
+### Ações de Transição
+
+- Movem objetos para classes mais baratas
+- Exemplos:
+  - S3 Standard-IA após 30 dias
+  - S3 Glacier Deep Archive após 1 ano
+- Resultado:
+  - Redução de custos ao longo do tempo
+
+### Ações de Expiração
+
+- Excluem objetos que não são mais necessários
+- Evitam custos com dados sem valor
+
+### Casos Ideais
+
+- Logs
+- Dados que perdem valor com o tempo
+- Requisitos de retenção regulatória
+- Arquivamento seguido de exclusão
