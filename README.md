@@ -2832,3 +2832,321 @@ Nesta lição, você aprenderá a:
 - Detecção de fraudes
 - Sistemas de recomendação
 - Pesquisa relacional
+
+
+# IA/ML na AWS
+
+---
+
+## Casos de Uso Comerciais Comuns para IA/ML
+
+- Automação de decisões com base em dados, aumentando eficiência e precisão nos processos de negócio
+- Previsão de resultados:
+  - Tendências de mercado
+  - Variação de preços
+  - Apoio ao planejamento e à estratégia empresarial
+- Classificação e encaminhamento:
+  - Direcionamento automático de ligações
+  - Classificação de solicitações por voz ou texto
+- Detecção de anomalias:
+  - Fraudes financeiras
+  - Comportamentos suspeitos
+  - Erros operacionais em tempo quase real
+
+---
+
+## Níveis de Soluções de IA/ML na AWS
+
+- A pilha de IA/ML da AWS é organizada em três níveis:
+  - Serviços de IA
+  - Serviços de ML
+  - Frameworks e infraestrutura de ML
+
+### Serviços de IA
+
+- Modelos prontos e totalmente gerenciados
+- Focados em tarefas específicas
+- Exemplos:
+  - Conversão de texto em fala (Amazon Polly)
+  - Análise de texto e sentimentos (Amazon Comprehend)
+
+### Serviços de ML
+
+- Permitem criar, treinar e implantar modelos próprios
+- Infraestrutura e ferramentas gerenciadas
+- Exemplo:
+  - Amazon SageMaker
+- Indicados quando é necessária maior personalização
+
+### Frameworks e Infraestrutura de ML
+
+- Nível máximo de controle
+- Uso de:
+  - Instâncias otimizadas
+  - Chips especializados
+  - Frameworks populares
+- Ideais para soluções altamente customizadas
+
+---
+
+# Soluções de IA/ML da AWS
+
+---
+
+## Benefícios e Finalidade da Pilha de IA/ML
+
+- Dividida em três níveis:
+  - Serviços de IA pré-criados
+  - Serviços de ML gerenciados
+  - Frameworks e infraestrutura de ML
+
+### Serviços de IA Pré-criados
+
+- Funcionalidades prontas para uso
+- Não exigem treinamento de modelos
+- Categorias:
+  - Linguagem
+  - Visão
+  - Pesquisa
+  - Conversação
+  - Personalização
+
+#### Exemplos
+
+- Amazon Comprehend: análise de sentimento
+- Amazon Polly: conversão de texto em fala
+- Amazon Transcribe: transcrição de áudio
+- Amazon Translate: tradução automática
+- Amazon Kendra: busca inteligente
+- Amazon Rekognition: análise de imagens e vídeos
+- Amazon Textract: extração de texto
+- Amazon Lex: chatbots
+- Amazon Personalize: recomendações
+
+### Serviços de ML
+
+- Foco no Amazon SageMaker IA
+- Criação, treinamento e implantação de modelos próprios
+- Infraestrutura totalmente gerenciada
+- IDE integrado e acesso a modelos pré-treinados
+- Mais controle sem gerenciar servidores
+
+### Frameworks e Infraestrutura de ML
+
+- Máxima flexibilidade para equipes experientes
+- Uso de bibliotecas como:
+  - PyTorch
+  - TensorFlow
+- Serviços comuns:
+  - Amazon EC2 otimizado para ML
+  - Amazon EMR
+  - Amazon ECS
+- Indicados para workloads avançadas
+
+---
+
+# Introdução à IA Generativa na AWS
+
+---
+
+## Aprendizado Profundo e IA Generativa
+
+### Aprendizado Profundo
+
+- Subconjunto de Machine Learning
+- Usa redes neurais com múltiplas camadas
+- Aprende padrões complexos em grandes volumes de dados
+- Cada camada extrai informações mais abstratas
+
+### IA Generativa
+
+- Subconjunto do aprendizado profundo
+- Utiliza modelos de base (foundation models)
+- Gera novos conteúdos:
+  - Texto
+  - Imagens
+  - Áudio
+  - Vídeo
+- Modelos podem ser adaptados para várias tarefas com pouco ajuste
+
+---
+
+## Tipos de Soluções de IA Generativa na AWS
+
+- Serviços gerenciados que facilitam o uso de modelos de base
+
+### Amazon SageMaker JumpStart
+
+- Hub de ML com modelos de base e soluções prontas
+- Implantação rápida
+- Ideal para iniciar projetos de IA generativa
+
+### Amazon Bedrock
+
+- Serviço totalmente gerenciado
+- Acesso a modelos de base de múltiplos provedores via API unificada
+- Suporte a:
+  - Fine-tuning
+  - Prompt engineering
+- Indicado para aplicações empresariais de IA generativa
+
+### Amazon Q
+
+- Assistente de IA generativa para negócios
+- Conecta-se aos dados internos da empresa
+- Geração de conteúdo e suporte a tarefas corporativas
+
+---
+
+# Soluções de IA Generativa da AWS
+
+---
+
+## Benefícios e Finalidade
+
+### Amazon SageMaker JumpStart
+
+- Acelera criação, treinamento e implantação de modelos
+- Modelos pré-treinados para:
+  - Visão computacional
+  - Processamento de linguagem natural
+  - Dados tabulares
+- Ideal para começar rápido sem criar infraestrutura do zero
+
+### Amazon Bedrock
+
+- Foco em grandes modelos de base
+- Integração com modelos como Claude e Stable Diffusion
+- Geração multimodal
+- Experiências conversacionais avançadas
+- Sem gerenciamento de servidores
+
+### Amazon Q
+
+- Assistente de IA para ambientes corporativos
+- Conexão segura com repositórios internos
+- Automação de fluxos de trabalho
+- Geração de conteúdo e respostas contextualizadas
+
+#### Variações
+
+- Amazon Q Business:
+  - Suporte a usuários de negócio
+  - Consultas internas e tomada de decisão
+- Amazon Q Developer:
+  - Suporte a desenvolvedores
+  - Geração e revisão de código
+  - Aumento de produtividade com segurança
+
+---
+
+# Introdução à Data Analytics
+
+---
+
+## Pipelines de Dados ETL
+
+### Benefícios e Finalidade
+
+- Fluxos automatizados de:
+  - Extração
+  - Transformação
+  - Carregamento
+- Centralizam dados em destinos como data warehouses
+- Padronizam e limpam dados
+- Reduzem trabalho manual e erros humanos
+- Funcionam como uma linha de montagem contínua de dados
+
+---
+
+## Definição de Data Analytics
+
+- Processo de transformar dados históricos brutos em informações valiosas
+- Apoia decisões de negócio
+- Responde perguntas como:
+  - Por que algo aconteceu?
+  - O que está mudando?
+- Foco em interpretação e explicação de dados passados
+- Diferente de IA/ML preditivo, que foca em prever o futuro
+
+---
+
+# Pipelines de Dados na AWS
+
+---
+
+## Serviços por Fase de um Pipeline Típico
+
+### Ingestão
+
+- Traz dados das origens para a nuvem
+- Tipos:
+  - Tempo real
+  - Em lote
+- Serviços:
+  - Amazon Kinesis Data Streams
+  - Amazon Data Firehose
+
+### Armazenamento
+
+- Amazon S3:
+  - Data lake flexível
+  - Dados brutos em grande volume
+- Amazon Redshift:
+  - Data warehouse estruturado
+  - Análises de alto desempenho
+
+### Catalogação
+
+- AWS Glue Data Catalog
+- Repositório central de metadados
+- Facilita descoberta e governança
+
+### Processamento
+
+- AWS Glue:
+  - ETL totalmente gerenciado
+- Amazon EMR:
+  - Big data
+  - Spark
+  - Hadoop
+
+### Análise e Visualização
+
+- Amazon Athena:
+  - Consultas SQL no S3
+- Amazon Redshift:
+  - Consultas analíticas complexas
+- Amazon QuickSight:
+  - Dashboards interativos
+- Amazon OpenSearch Service:
+  - Busca e visualização em tempo real
+
+---
+
+# Data Analytics e IA/ML
+
+---
+
+## Uso de Pipeline Automatizado em uma Empresa Real
+
+- Empresa de e-commerce coleta dados de:
+  - Navegação
+  - Compras
+  - Comportamento do cliente
+- Dados enviados à AWS em tempo quase real
+- Pipeline automatizado:
+  - Limpa
+  - Transforma
+  - Padroniza os dados
+- Dados consolidados são usados por:
+  - Analistas de negócio
+  - Ferramentas de data analytics
+- Visualização de:
+  - Vendas
+  - Engajamento
+  - Performance de campanhas
+- Mesmo conjunto de dados alimenta modelos de IA/ML:
+  - Recomendação de produtos
+  - Previsão de demanda
+- Elimina silos de dados e retrabalho
